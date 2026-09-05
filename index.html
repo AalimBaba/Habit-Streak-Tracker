@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habit Streak Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <h1>Habit Streak Tracker</h1>
+        <p>Build momentum with daily wins.</p>
+      </header>
+
+      <section class="card add-habit">
+        <h2>Add Habit</h2>
+        <form id="habit-form" autocomplete="off">
+          <label for="habit-name" class="sr-only">Habit name</label>
+          <div class="input-row">
+            <input id="habit-name" name="habit" type="text" maxlength="60" placeholder="e.g. Read 20 minutes" required />
+            <button type="submit">Add</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="section-title-row">
+          <h2>Your Habits</h2>
+          <small id="habit-count"></small>
+        </div>
+        <div id="empty-state" class="empty-state" hidden>
+          No habits yet. Add your first one to start tracking.
+        </div>
+        <div id="habit-list" class="habit-list"></div>
+      </section>
+    </main>
+
+    <template id="habit-template">
+      <article class="habit">
+        <div class="habit__top">
+          <h3 class="habit__name"></h3>
+          <button class="danger-btn remove-btn" type="button">Remove</button>
+        </div>
+
+        <div class="habit__actions">
+          <button class="done-btn" type="button">Done Today</button>
+          <button class="missed-btn" type="button">Missed Today</button>
+          <button class="clear-btn" type="button">Clear Today</button>
+        </div>
+
+        <div class="stats-grid">
+          <div><span>Current Streak</span><strong class="stat-current">0</strong></div>
+          <div><span>Best Streak</span><strong class="stat-best">0</strong></div>
+          <div><span>Completion Rate</span><strong class="stat-rate">0%</strong></div>
+        </div>
+
+        <p class="coach-message"></p>
+
+        <div class="heatmap-wrap">
+          <div class="heatmap-legend">
+            <span><i class="dot none"></i>Unmarked</span>
+            <span><i class="dot done"></i>Done</span>
+            <span><i class="dot missed"></i>Missed</span>
+          </div>
+          <div class="heatmap"></div>
+          <small>Tap a day in the last 30 days to cycle status.</small>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>

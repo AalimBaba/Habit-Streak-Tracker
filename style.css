@@ -1,0 +1,258 @@
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #1f2a44;
+  --muted: #6f7a94;
+  --done: #2ca66f;
+  --missed: #d95c5c;
+  --line: #e4e8f2;
+  --brand: #3b5bfd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  width: min(980px, 100% - 2rem);
+  margin: 2rem auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.app__header h1 {
+  margin: 0;
+}
+
+.app__header p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+input {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  width: 100%;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.92;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+#habit-form button,
+.done-btn {
+  background: var(--brand);
+  color: #fff;
+}
+
+.missed-btn {
+  background: #ffe3e3;
+  color: #992d2d;
+}
+
+.clear-btn {
+  background: #f0f3fa;
+  color: #2a3a62;
+}
+
+.danger-btn {
+  background: #fff1f1;
+  color: #b23030;
+}
+
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 1rem;
+  color: var(--muted);
+}
+
+.habit-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.habit {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.habit__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.habit__name {
+  margin: 0;
+  word-break: break-word;
+}
+
+.habit__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.stats-grid div {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.6rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.stats-grid span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stats-grid strong {
+  font-size: 1.25rem;
+}
+
+.coach-message {
+  margin: 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: #eef3ff;
+  color: #2a3a62;
+}
+
+.heatmap-wrap {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.heatmap {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.day {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  height: 22px;
+  background: #f4f6fc;
+}
+
+.day[data-status='done'] {
+  background: var(--done);
+  border-color: var(--done);
+}
+
+.day[data-status='missed'] {
+  background: var(--missed);
+  border-color: var(--missed);
+}
+
+.day.today {
+  outline: 2px solid #8ba0ff;
+}
+
+.heatmap-legend {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  margin-right: 0.28rem;
+  vertical-align: baseline;
+}
+
+.dot.none {
+  background: #f4f6fc;
+}
+
+.dot.done {
+  background: var(--done);
+  border-color: var(--done);
+}
+
+.dot.missed {
+  background: var(--missed);
+  border-color: var(--missed);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .app {
+    width: min(980px, 100% - 1rem);
+    margin: 1rem auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .habit__top {
+    flex-direction: column;
+  }
+}
